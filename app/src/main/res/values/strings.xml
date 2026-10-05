@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mie Ayam Order</string>
+    <string name="title_home">Pemesanan Mie Ayam</string>
+    <string name="title_menu">Daftar Menu Mie Ayam</string>
+    <string name="title_web">Info &amp; Web Mie Ayam</string>
+    <string name="btn_menu">Lihat Menu</string>
+    <string name="btn_web">Buka Halaman Web</string>
+</resources>
