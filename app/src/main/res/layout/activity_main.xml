@@ -6,55 +6,147 @@
     android:orientation="vertical"
     android:background="@color/background_light">
 
-    <!-- Toolbar Utama (Tanpa Tombol Back) -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarMain"
+    <!-- Header Banner Atas -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="220dp"
         android:background="@color/primary_color"
-        app:title="@string/app_name"
-        app:titleTextColor="@android:color/white" />
+        android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_launcher_foreground"
-            android:contentDescription="Logo Mie Ayam" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/primary_color"
-            android:layout_marginTop="16dp" />
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/btnGoToMenu"
+            <!-- Logo Bulat di Header -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="45dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp">
+
+                <ImageView
+                    android:id="@+id/imgLogoMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/mieayam"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Logo Mie Ayam" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Content Utama di Dalam Card Floating -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-30dp"
+        android:scrollbars="none">
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_menu"
-            android:backgroundTint="@color/primary_color"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="32dp" />
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:strokeWidth="0dp">
 
-        <Button
-            android:id="@+id/btnGoToWeb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_web"
-            android:backgroundTint="@color/accent_color"
-            android:textColor="@color/text_dark"
-            android:layout_marginTop="12dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Menu Utama"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih layanan yang ingin kamu akses"
+                    android:textSize="13sp"
+                    android:textColor="#757575"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- Tombol 1: Lihat Menu -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoToMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="@string/btn_menu"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/primary_color"
+                    app:cornerRadius="12dp" />
+
+                <!-- Tombol 2: Buka Halaman Web -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoToWeb"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="@string/btn_web"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark"
+                    android:backgroundTint="@color/accent_color"
+                    app:cornerRadius="12dp"
+                    android:layout_marginTop="10dp" />
+
+                <!-- Tombol 3: Profil Developer -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoToProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="Profil Developer"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/primary_dark"
+                    app:cornerRadius="12dp"
+                    android:layout_marginTop="10dp" />
+
+                <!-- Garis Pemisah Sederhana -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginVertical="16dp" />
+
+                <!-- Tombol 4: Logout -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="Logout"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#757575"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 </LinearLayout>
