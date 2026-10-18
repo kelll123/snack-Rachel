@@ -17,8 +17,9 @@ class SplashActivity : AppCompatActivity() {
             val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
             val isLogin = sharedPreferences.getBoolean("isLogin", false)
 
+            // Jika sudah login, arahkan langsung ke BaseActivity (Bottom Navigation)
             val intent = if (isLogin) {
-                Intent(this, MainActivity::class.java)
+                Intent(this, BaseActivity::class.java)
             } else {
                 Intent(this, LoginActivity::class.java)
             }

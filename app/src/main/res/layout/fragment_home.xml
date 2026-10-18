@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_light">
+
+    <!-- Header Atas Merah -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/primary_color"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:cardCornerRadius="35dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/mieayam"
+                android:scaleType="centerCrop"
+                android:contentDescription="Logo Mie Ayam" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Area Tombol Navigasi Utama -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu Utama"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih layanan yang ingin kamu akses"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnGoToMenu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/btn_menu"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary_color" />
+
+        <Button
+            android:id="@+id/btnGoToWeb"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/btn_web"
+            android:textColor="@color/text_dark"
+            android:backgroundTint="@color/accent_color"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/btnGoToProfile"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Profil Developer"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary_dark"
+            android:layout_marginTop="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginVertical="16dp" />
+
+        <Button
+            android:id="@+id/btnLogoutUser"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:backgroundTint="#757575" />
+
+    </LinearLayout>
+</LinearLayout>
