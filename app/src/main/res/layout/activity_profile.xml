@@ -6,14 +6,16 @@
     android:orientation="vertical"
     android:background="@color/background_light">
 
-    <!-- Toolbar Utama -->
+    <!-- Toolbar Utama dengan Icon Panah Kembali -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarProfile"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_color"
         app:title="Profil Developer"
-        app:titleTextColor="@android:color/white" />
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:navigationIconTint="@android:color/white" />
 
     <ScrollView
         android:layout_width="match_parent"

@@ -17,21 +17,21 @@ class MainActivity : AppCompatActivity() {
         val btnGoToMenu = findViewById<Button>(R.id.btnGoToMenu)
         val btnGoToWeb = findViewById<Button>(R.id.btnGoToWeb)
         val btnGoToProfile = findViewById<Button>(R.id.btnGoToProfile)
-        val btnLogout = findViewById<Button>(R.id.btnLogout)
+        val btnLogoutUser = findViewById<Button>(R.id.btnLogoutUser)
 
-        btnGoToMenu.setOnClickListener {
+        btnGoToMenu?.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))
         }
 
-        btnGoToWeb.setOnClickListener {
+        btnGoToWeb?.setOnClickListener {
             startActivity(Intent(this, WebActivity::class.java))
         }
 
-        btnGoToProfile.setOnClickListener {
+        btnGoToProfile?.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        btnLogout.setOnClickListener {
+        btnLogoutUser?.setOnClickListener {
             showLogoutDialog()
         }
     }
@@ -40,9 +40,11 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Konfirmasi Logout")
         builder.setMessage("Apakah Anda yakin ingin keluar dari akun?")
-        builder.setCancelable(true)
+        builder.setCancelable(false)
 
-        builder.setPositiveButton("Ya") { _, _ ->
+        builder.setPositiveButton("Ya") { dialog, _ ->
+            dialog.dismiss()
+
             val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putBoolean("isLogin", false)
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Berhasil Logout", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }

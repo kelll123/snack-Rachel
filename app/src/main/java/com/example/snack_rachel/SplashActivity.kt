@@ -14,17 +14,16 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            // Membaca SharedPreferences sesuai Modul Pertemuan 6
             val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
             val isLogin = sharedPreferences.getBoolean("isLogin", false)
 
-            if (isLogin) {
-                // Jika sudah login -> Langsung ke MainActivity
-                startActivity(Intent(this, MainActivity::class.java))
+            val intent = if (isLogin) {
+                Intent(this, MainActivity::class.java)
             } else {
-                // Jika belum login -> Ke LoginActivity
-                startActivity(Intent(this, LoginActivity::class.java))
+                Intent(this, LoginActivity::class.java)
             }
+
+            startActivity(intent)
             finish()
         }, 2000)
     }
