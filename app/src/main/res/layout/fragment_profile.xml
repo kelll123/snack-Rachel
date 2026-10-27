@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_light">
+    android:orientation="vertical">
 
-    <!-- Toolbar Profil -->
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -26,7 +24,6 @@
             android:padding="20dp"
             android:gravity="center_horizontal">
 
-            <!-- Card Foto Profil -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="110dp"
                 android:layout_height="110dp"
@@ -45,14 +42,13 @@
                     android:contentDescription="Foto Profil" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Nama Developer -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rachel"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_dark"
+                android:textColor="?attr/colorOnSurface"
                 android:layout_marginTop="16dp" />
 
             <TextView
@@ -63,34 +59,45 @@
                 android:textColor="#757575"
                 android:layout_marginTop="2dp" />
 
-            <!-- Media Sosial -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#FFF0F0"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/primary_color"
-                app:strokeWidth="1dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Instagram: @kellglg_"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/primary_color"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="8dp" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Hobi & Minat -->
+            <!-- Card Switch Dark Mode Adaptif -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Mode Gelap (Dark Mode)"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorOnSurface" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switchDarkMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card Hobi Adaptif -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="0dp">
@@ -120,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:text="- Pengkodingan Aplikasi Mobile\n- Eksplorasi Kuliner Mie Ayam\n- Desain Tampilan Antarmuka (UI/UX)"
                         android:textSize="14sp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="?attr/colorOnSurface"
                         android:lineSpacingExtra="4dp" />
 
                 </LinearLayout>
