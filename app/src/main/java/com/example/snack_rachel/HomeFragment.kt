@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
 
@@ -23,55 +22,47 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnGoToMenu = view.findViewById<Button>(R.id.btnGoToMenu)
-        val btnGoToWeb = view.findViewById<Button>(R.id.btnGoToWeb)
-        val btnGoToProfile = view.findViewById<Button>(R.id.btnGoToProfile)
-        val btnLogoutUser = view.findViewById<Button>(R.id.btnLogoutUser)
+        val btnGoToMenu = view.findViewById<View>(R.id.btnGoToMenu)
+        val btnGoToWeb = view.findViewById<View>(R.id.btnGoToWeb)
+        val btnGoToProfile = view.findViewById<View>(R.id.btnGoToProfile)
+        val btnLogoutUser = view.findViewById<View>(R.id.btnLogoutUser)
 
+        // Grid 1: Pindah ke Tab Menu di BottomNavigation
         btnGoToMenu?.setOnClickListener {
-            startActivity(Intent(requireContext(), MenuActivity::class.java))
+            val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView)
+            bottomNav?.selectedItemId = R.id.nav_menu
         }
 
+        // Grid 2: Buka Halaman Web
         btnGoToWeb?.setOnClickListener {
             startActivity(Intent(requireContext(), WebActivity::class.java))
         }
 
+        // Grid 3: Pindah ke Tab Profile di BottomNavigation
         btnGoToProfile?.setOnClickListener {
-            startActivity(Intent(requireContext(), ProfileActivity::class.java))
+            val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView)
+            bottomNav?.selectedItemId = R.id.nav_profile
         }
 
+        // Grid 4: Konfirmasi Logout
         btnLogoutUser?.setOnClickListener {
-            showLogoutDialog()
+            AlertDialog.Builder(requireContext())
+                .setTitle("Konfirmasi Logout")
+                .setMessage("Apakah kamu yakin ingin keluar dari aplikasi?")
+                .setPositiveButton("Ya, Keluar") { _, _ ->
+                    // Hapus semua sesi login yang tersimpan
+                    requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                        .edit().clear().apply()
+                    requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                        .edit().clear().apply()
+
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+                .setNegativeButton("Batal", null)
+                .show()
         }
-    }
-
-    private fun showLogoutDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Konfirmasi Logout")
-        builder.setMessage("Apakah Anda yakin ingin keluar dari akun?")
-        builder.setCancelable(false)
-
-        builder.setPositiveButton("Ya") { dialog, _ ->
-            dialog.dismiss()
-
-            val sharedPreferences = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putBoolean("isLogin", false)
-            editor.apply()
-
-            Toast.makeText(requireContext(), "Berhasil Logout", Toast.LENGTH_SHORT).show()
-
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            requireActivity().finish()
-        }
-
-        builder.setNegativeButton("Batal") { dialog, _ ->
-            dialog.dismiss()
-        }
-
-        val alertDialog = builder.create()
-        alertDialog.show()
     }
 }
