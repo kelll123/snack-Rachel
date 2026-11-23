@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
         val btnGoToWeb = view.findViewById<View>(R.id.btnGoToWeb)
         val btnGoToProfile = view.findViewById<View>(R.id.btnGoToProfile)
         val btnLogoutUser = view.findViewById<View>(R.id.btnLogoutUser)
+        val cardPromoOrder = view.findViewById<View>(R.id.cardPromoOrder)
 
         // Grid 1: Pindah ke Tab Menu di BottomNavigation
         btnGoToMenu?.setOnClickListener {
@@ -63,6 +64,11 @@ class HomeFragment : Fragment() {
                 }
                 .setNegativeButton("Batal", null)
                 .show()
+        }
+
+        // Kartu Rekomendasi / Promo: Buka Halaman CRUD Pesanan (OrderActivity)
+        cardPromoOrder?.setOnClickListener {
+            startActivity(Intent(requireContext(), OrderActivity::class.java))
         }
     }
 }

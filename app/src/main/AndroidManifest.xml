@@ -49,6 +49,10 @@
         <activity
             android:name=".OnboardActivity"
             android:exported="false" />
+        <activity
+            android:name=".OrderActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

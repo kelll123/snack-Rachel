@@ -6,13 +6,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.snack_rachel.data.model.MenuSupabase
+import java.text.NumberFormat
+import java.util.Locale
 
 class MenuAdapter(
-    private var menuList: List<MenuModel>,
-    private val onItemClick: (MenuModel) -> Unit
+    private var menuList: List<MenuSupabase>,
+    private val onItemClick: (MenuSupabase) -> Unit,
+    private val onItemLongClick: (MenuSupabase) -> Unit
 ) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
-    inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgMenu: ImageView = itemView.findViewById(R.id.imgMenu)
         val tvNama: TextView = itemView.findViewById(R.id.tvNamaMenu)
         val tvDeskripsi: TextView = itemView.findViewById(R.id.tvDeskripsiMenu)
@@ -26,17 +30,26 @@ class MenuAdapter(
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val item = menuList[position]
-        holder.imgMenu.setImageResource(item.gambarResId)
-        holder.tvNama.text = item.nama
-        holder.tvDeskripsi.text = item.deskripsi
-        holder.tvHarga.text = item.harga
+        val formatRp = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
 
+        holder.imgMenu.setImageResource(R.drawable.mieayam)
+        holder.tvNama.text = item.nama_menu
+        holder.tvDeskripsi.text = item.deskripsi
+        holder.tvHarga.text = formatRp.format(item.harga)
+
+        // Klik biasa -> Edit Menu (UPDATE)
         holder.itemView.setOnClickListener { onItemClick(item) }
+
+        // Tekan lama -> Hapus Menu (DELETE)
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick(item)
+            true
+        }
     }
 
     override fun getItemCount(): Int = menuList.size
 
-    fun updateData(newList: List<MenuModel>) {
+    fun updateData(newList: List<MenuSupabase>) {
         menuList = newList
         notifyDataSetChanged()
     }
