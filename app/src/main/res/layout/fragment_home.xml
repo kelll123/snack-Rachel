@@ -269,11 +269,11 @@
 
                 </GridLayout>
 
-                <!-- Banner Rekomendasi Spesial di Bagian Bawah -->
+                <!-- Banner Pesanan Pelanggan di Bagian Bawah -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rekomendasi Hari Ini"
+                    android:text="Layanan Pemesanan"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="?attr/colorOnSurface"
@@ -282,10 +282,13 @@
                     android:layout_marginBottom="10dp" />
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPromoOrder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="6dp"
                     android:layout_marginBottom="20dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="#FFF8E1"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="2dp"
@@ -314,7 +317,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Paket Komplit Jumbo"
+                                android:text="Kelola Pesanan Pelanggan ➔"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
                                 android:textColor="#E65100" />
@@ -322,7 +325,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mie ayam porsi jumbo + bakso sapi + pangsit goreng renyah hanya Rp 20.000!"
+                                android:text="Ketuk di sini untuk menambah, melihat, mengubah, dan menghapus pesanan mie ayam (Supabase)."
                                 android:textSize="12sp"
                                 android:textColor="#5D4037"
                                 android:layout_marginTop="2dp" />

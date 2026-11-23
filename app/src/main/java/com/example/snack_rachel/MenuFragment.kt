@@ -16,9 +16,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snack_rachel.data.api.SupabaseClient
-import com.example.snack_rachel.data.model.MenuSupabase
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
+import com.example.snack_rachel.data.model.MenuSupabase
 
 class MenuFragment : Fragment() {
 
